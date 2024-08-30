@@ -11,7 +11,7 @@ KingfisherWebP is an extension of the popular library [Kingfisher](https://githu
   s.homepage         = 'https://github.com/yeatse/KingfisherWebP'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Yang Chao' => 'iyeatse@gmail.com' }
-  s.source           = { :git => 'https://github.com/yeatse/KingfisherWebP.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/yeatse/KingfisherWebP.git', :tag => s.version }
   s.social_media_url = 'https://twitter.com/yeatse'
 
   s.ios.deployment_target = "12.0"
