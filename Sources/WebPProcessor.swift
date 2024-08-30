@@ -31,7 +31,7 @@ public struct WebPProcessor: ImageProcessor {
         }
     }
 
-    public func processAsync(item: ImageProcessItem, options: KingfisherParsedOptionsInfo, handle: KFWebPAsymHandle?) {
+    public func processAsync(item: ImageProcessItem, options: KingfisherParsedOptionsInfo, handle: ((KFCrossPlatformImage?) -> Void)?) {
         switch item {
         case .image(let image):
             handle?(image)

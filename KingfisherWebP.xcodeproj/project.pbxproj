@@ -11,7 +11,6 @@
 		38E23F292591B68900EBE21D /* KingfisherWebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38E23F1F2591B68900EBE21D /* KingfisherWebP.framework */; };
 		38E23F2E2591B68900EBE21D /* KingfisherWebPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E23F2D2591B68900EBE21D /* KingfisherWebPTests.swift */; };
 		38E23F302591B68900EBE21D /* KingfisherWebP.h in Headers */ = {isa = PBXBuildFile; fileRef = 38E23F222591B68900EBE21D /* KingfisherWebP.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		38E23F3D2591B70300EBE21D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 38E23F3C2591B70300EBE21D /* Kingfisher */; };
 		38E23F432591B75200EBE21D /* WebPSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E23F402591B75200EBE21D /* WebPSerializer.swift */; };
 		38E23F442591B75200EBE21D /* WebPProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E23F412591B75200EBE21D /* WebPProcessor.swift */; };
 		38E23F452591B75200EBE21D /* Image+WebP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38E23F422591B75200EBE21D /* Image+WebP.swift */; };
@@ -25,6 +24,7 @@
 		38E23FB62591C39C00EBE21D /* cover.png in Resources */ = {isa = PBXBuildFile; fileRef = 38E23FAE2591C39C00EBE21D /* cover.png */; };
 		38E23FB72591C39C00EBE21D /* animation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 38E23FAF2591C39C00EBE21D /* animation.gif */; };
 		38FDDBF82A3DFD8F00553E3C /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 38FDDBF72A3DFD8F00553E3C /* heart.png */; };
+		857C58F92C818B760034791D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 857C58F82C818B760034791D /* Kingfisher */; };
 		FEAA17F3264BF9CA00B1C2E7 /* CGImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = FEAA17F0264BF9CA00B1C2E7 /* CGImage+WebP.m */; };
 		FEAA17F4264BF9CA00B1C2E7 /* CGImage+WebP.h in Headers */ = {isa = PBXBuildFile; fileRef = FEAA17F2264BF9CA00B1C2E7 /* CGImage+WebP.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -68,8 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				857C58F92C818B760034791D /* Kingfisher in Frameworks */,
 				38E23F752591BBB000EBE21D /* libwebp in Frameworks */,
-				38E23F3D2591B70300EBE21D /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +90,7 @@
 				38E23F212591B68900EBE21D /* Sources */,
 				38E23F2C2591B68900EBE21D /* Tests */,
 				38E23F202591B68900EBE21D /* Products */,
+				857C58F12C81881F0034791D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,6 +143,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		857C58F12C81881F0034791D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FEAA17EF264BF9CA00B1C2E7 /* KingfisherWebP-ObjC */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,8 +197,8 @@
 			);
 			name = KingfisherWebP;
 			packageProductDependencies = (
-				38E23F3C2591B70300EBE21D /* Kingfisher */,
 				38E23F742591BBB000EBE21D /* libwebp */,
+				857C58F82C818B760034791D /* Kingfisher */,
 			);
 			productName = KingfisherWebP;
 			productReference = 38E23F1F2591B68900EBE21D /* KingfisherWebP.framework */;
@@ -243,8 +251,8 @@
 			);
 			mainGroup = 38E23F152591B68900EBE21D;
 			packageReferences = (
-				38E23F3B2591B70300EBE21D /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				38E23F732591BBB000EBE21D /* XCRemoteSwiftPackageReference "libwebp-Xcode" */,
+				857C58F72C818B760034791D /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 38E23F202591B68900EBE21D /* Products */;
 			projectDirPath = "";
@@ -459,11 +467,13 @@
 				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yeatse.KingfisherWebP;
@@ -490,11 +500,13 @@
 				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yeatse.KingfisherWebP;
@@ -582,14 +594,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		38E23F3B2591B70300EBE21D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.11.0;
-			};
-		};
 		38E23F732591BBB000EBE21D /* XCRemoteSwiftPackageReference "libwebp-Xcode" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/libwebp-Xcode";
@@ -598,18 +602,26 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		857C58F72C818B760034791D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/foxstudiohua/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		38E23F3C2591B70300EBE21D /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 38E23F3B2591B70300EBE21D /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
 		38E23F742591BBB000EBE21D /* libwebp */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 38E23F732591BBB000EBE21D /* XCRemoteSwiftPackageReference "libwebp-Xcode" */;
 			productName = libwebp;
+		};
+		857C58F82C818B760034791D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 857C58F72C818B760034791D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

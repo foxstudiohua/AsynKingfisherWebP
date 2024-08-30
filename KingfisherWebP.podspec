@@ -8,10 +8,10 @@ Pod::Spec.new do |s|
 KingfisherWebP is an extension of the popular library [Kingfisher](https://github.com/onevcat/Kingfisher), providing a ImageProcessor and CacheSerializer for you to conveniently handle the WebP format.
                        DESC
 
-  s.homepage         = 'https://github.com/foxstudiohua/AsynKingfisherWebP'
+  s.homepage         = 'https://github.com/foxstudiohua/KingfisherWebP'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Yang Chao' => 'iyeatse@gmail.com' }
-  s.source           = { :git => 'https://github.com/foxstudiohua/AsynKingfisherWebP.git', :tag => s.version }
+  s.source           = { :git => 'https://github.com/foxstudiohua/KingfisherWebP.git', :tag => s.version }
   s.social_media_url = 'https://twitter.com/yeatse'
 
   s.ios.deployment_target = "12.0"

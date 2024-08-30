@@ -98,7 +98,7 @@ extension KingfisherWrapper where Base: KFCrossPlatformImage {
         return KingfisherWrapper.animatedImage(source: frameSource, options: options)
     }
 
-    public static func imageAsync(webpData: Data, options: ImageCreatingOptions, completion: KFWebPAsymHandle?) {
+    public static func imageAsync(webpData: Data, options: ImageCreatingOptions, completion: ((KFCrossPlatformImage?) -> Void)?) {
         let frameCount = WebPImageFrameCountGetFromData(webpData as CFData)
         if (frameCount == 0) {
             completion?(nil)
