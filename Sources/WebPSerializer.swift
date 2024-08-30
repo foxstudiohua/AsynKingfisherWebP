@@ -43,4 +43,10 @@ public struct WebPSerializer: CacheSerializer {
     public func image(with data: Data, options: KingfisherParsedOptionsInfo) -> KFCrossPlatformImage? {
         return WebPProcessor.default.process(item: .data(data), options: options)
     }
+
+    public func imageAsync(with data: Data, options: KingfisherParsedOptionsInfo, completion: ((KFCrossPlatformImage?) -> Void)?) {
+        WebPProcessor.default.processAsync(item: .data(data), options: options) { image in
+            completion?(image)
+        }
+    }
 }

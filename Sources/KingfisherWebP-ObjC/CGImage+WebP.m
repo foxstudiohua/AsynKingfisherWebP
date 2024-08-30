@@ -585,6 +585,7 @@ CGImageRef WebPDecoderCopyImageAtIndex(WebPDecoderRef decoder, int index) {
                 free(buffer); // fallback
             } else {
                 imageData = CFDataCreateWithBytesNoCopy(kCFAllocatorDefault, buffer, bufSize, kCFAllocatorDefault);
+                free(buffer);
             }
         }
         WebPDemuxReleaseIterator(&prev);
@@ -618,7 +619,7 @@ anim_decoder:
         return NULL;
     }
     CGDataProviderRef provider = CGDataProviderCreateWithCFData(imageData);
-    CGImageRef image = CGImageCreate(info.canvas_width, info.canvas_height, 8, 32, info.canvas_width * 4, CGColorSpaceCreateDeviceRGB(), kCGImageAlphaPremultipliedLast | kCGBitmapByteOrderDefault, provider, NULL, false, kCGRenderingIntentDefault);
+    CGImageRef image = CGImageCreate(info.canvas_width, info.canvas_height, 8, 32, info.canvas_width * 4, WebPColorSpaceForDeviceRGB(), kCGImageAlphaPremultipliedLast | kCGBitmapByteOrderDefault, provider, NULL, false, kCGRenderingIntentDefault);
     CGDataProviderRelease(provider);
     CFRelease(imageData);
     return image;
