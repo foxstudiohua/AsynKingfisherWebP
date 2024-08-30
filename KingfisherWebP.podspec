@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'KingfisherWebP'
   s.version          = ENV['LIB_VERSION']
-  s.swift_version    = '5.0'
+  s.swift_version    = '5.0.1'
   s.summary          = 'A Kingfisher extension helping you process webp format'
 
   s.description      = <<-DESC
@@ -36,6 +36,6 @@ KingfisherWebP is an extension of the popular library [Kingfisher](https://githu
     'USER_HEADER_SEARCH_PATHS' => '$(inherited) $(SRCROOT)/libwebp/src'
   }
 
-  s.dependency 'Kingfisher', '~> 7.11'
+  s.dependency 'Kingfisher', '~> 7.12.1'
   s.dependency 'libwebp', '>= 1.1.0'
 end
