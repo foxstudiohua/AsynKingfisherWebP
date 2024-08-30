@@ -94,7 +94,6 @@ extension KingfisherWrapper where Base: KFCrossPlatformImage {
 
         // MARK: Animated images
         guard let frameSource = WebPFrameSource(data: webpData) else { return nil }
-        frameSource.serialCacheKey = options.serialCacheKey
         return KingfisherWrapper.animatedImage(source: frameSource, options: options)
     }
 
@@ -126,7 +125,6 @@ extension KingfisherWrapper where Base: KFCrossPlatformImage {
             completion?(nil)
             return
         }
-        frameSource.serialCacheKey = options.serialCacheKey
         KingfisherWrapper.animatedImageAsync(source: frameSource, options: options) { image in
             completion?(image)
         }
@@ -153,7 +151,7 @@ class WebPFrameSource: ImageFrameSource {
     let data: Data?
     private let decoder: WebPDecoderRef
     private var decoderLock: UnsafeMutablePointer<os_unfair_lock>
-    var serialCacheKey: String = ""
+    private var frameCache = NSCache<NSNumber, CGImage>()
     private let queue = DispatchQueue(label: "com.foxStudio.kf.generateFrameImage")
 
     var frameCount: Int {
@@ -167,12 +165,11 @@ class WebPFrameSource: ImageFrameSource {
         defer {
             os_unfair_lock_unlock(decoderLock)
         }
-        let cmpKey = "\(serialCacheKey)_\(index)" as NSString
-        var image = KingfisherManager.shared.frameImageCache.object(forKey: cmpKey)
+        var image = frameCache.object(forKey: index as NSNumber)
         if image == nil {
             image = WebPDecoderCopyImageAtIndex(decoder, Int32(index))
             if image != nil {
-                KingfisherManager.shared.frameImageCache.setObject(image!, forKey: cmpKey)
+                frameCache.setObject(image!, forKey: index as NSNumber)
             }
         }
         guard let image = image else { return nil }
@@ -209,17 +206,15 @@ class WebPFrameSource: ImageFrameSource {
         defer {
             os_unfair_lock_unlock(decoderLock)
         }
-        let cmpKey = "\(serialCacheKey)_\(index)" as NSString
-        var image = KingfisherManager.shared.frameImageCache.object(forKey: cmpKey)
+        var image = frameCache.object(forKey: index as NSNumber)
         if image == nil {
             self.queue.async {
                 image = WebPDecoderCopyImageAtIndex(self.decoder, Int32(index))
                 DispatchQueue.main.async {
                     if image != nil {
-                        KingfisherManager.shared.frameImageCache.setObject(image!, forKey: cmpKey)
+                        self.frameCache.setObject(image!, forKey: index as NSNumber)
                     }
                     completon?(image)
-                    return
                 }
             }
         } else {

@@ -37,8 +37,7 @@ public struct WebPProcessor: ImageProcessor {
             handle?(image)
         case .data(let data):
             if data.isWebPFormat {
-                var creatingOptions = ImageCreatingOptions(scale: options.scaleFactor, preloadAll: options.preloadAllAnimationData, onlyFirstFrame: options.onlyLoadFirstFrame)
-                creatingOptions.serialCacheKey = options.serialCacheKey
+                let creatingOptions = ImageCreatingOptions(scale: options.scaleFactor, preloadAll: options.preloadAllAnimationData, onlyFirstFrame: options.onlyLoadFirstFrame)
                 KingfisherWrapper<KFCrossPlatformImage>.imageAsync(webpData: data, options: creatingOptions) { image in
                     handle?(image)
                 }
